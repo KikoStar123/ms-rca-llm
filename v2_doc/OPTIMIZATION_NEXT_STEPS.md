@@ -30,6 +30,32 @@ python pipeline/analyze_eval_candidate_coverage.py --jsonl output/eval_split.jso
 
 ---
 
+## 已在代码中修正：候选列表（`build_llm_inputs.py`）
+
+针对「小模型 Top‑5 常为 docker，而金标为 db/os 等」导致的漏召，已做两点默认改动（**不使用金标**，推理阶段同样适用）：
+
+1. **将小模型排序候选从 Top‑5 扩展到 Top‑10**（`--topk-max`，默认 10）。
+2. **将 `fault_event.name`（告警对象组件 ID）插入候选最前并去重**，与加权 Top‑K 合并后截断到 `topk_max` 条。
+
+关闭注入（仅对比实验）：`python pipeline/build_llm_inputs.py ... --no-inject-fault-name`
+
+**你需要重新生成数据并划分**，再重新训练，指标才与旧版 JSONL 不可直接横比：
+
+```bash
+# 仓库根目录
+python pipeline/build_llm_inputs.py --input-dir output --output output/llm_inputs_v4.jsonl
+python pipeline/split_dataset.py --input output/llm_inputs_v4.jsonl ^
+  --train-out output/train_split.jsonl --eval-out output/eval_split.jsonl --manifest output/split_manifest.json
+```
+
+（Linux 将 `^` 换为行末 `\`。）然后可再跑：
+
+`python pipeline/analyze_eval_candidate_coverage.py --jsonl output/eval_split.jsonl`
+
+查看 `gold_not_in_candidates` 是否下降。
+
+---
+
 ## 第 2 步：对照训练（待你在 GPU 上执行）
 
 与 `训练评估结果_20260412_011825.json` 中配置对齐，仅将 **epoch 从 1 提到 2**（仍可用验证集 early best）。本机可用：

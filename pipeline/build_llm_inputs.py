@@ -69,13 +69,42 @@ def compute_topk(
     return result["predictions"]
 
 
-def compute_one_key(payload: tuple[tuple[str, int, int], dict]) -> tuple[tuple[str, int, int], dict]:
-    key, weights = payload
+def compute_one_key(
+    payload: tuple[tuple[str, int, int], dict, list[int]],
+) -> tuple[tuple[str, int, int], dict]:
+    key, weights, ks = payload
     date_str, w_before, w_after = key
     event_date = datetime.strptime(date_str, "%Y-%m-%d")
-    predictions = compute_topk(event_date, w_before, w_after, weights, [1, 3, 5])
+    predictions = compute_topk(event_date, w_before, w_after, weights, ks)
     pred_map = {item["event_index"]: item["top_candidates"] for item in predictions}
     return key, pred_map
+
+
+def merge_candidates_with_fault_event(
+    ranked: list[str],
+    fault_event: dict,
+    *,
+    max_candidates: int,
+) -> list[str]:
+    """
+    将小模型排序结果与 fault_event.name 合并：name 通常即告警对象/组件 ID，
+    与金标 root_cause_component 常一致；此前仅靠指标加权 Top-K 时易漏掉非 docker 等类型。
+    去重保序，截断到 max_candidates。
+    """
+    name = (fault_event.get("name") or "").strip()
+    seen: set[str] = set()
+    out: list[str] = []
+    if name:
+        seen.add(name)
+        out.append(name)
+    for x in ranked:
+        if not x or x in seen:
+            continue
+        seen.add(x)
+        out.append(x)
+        if len(out) >= max_candidates:
+            return out
+    return out[:max_candidates]
 
 
 def parse_iso_time(value: str) -> datetime | None:
@@ -127,6 +156,17 @@ def main() -> None:
         type=int,
         default=None,
         help="Top-K 计算的并行线程数，默认取 CPU 核心数",
+    )
+    parser.add_argument(
+        "--topk-max",
+        type=int,
+        default=10,
+        help="小模型候选最多保留几条（传给 evaluate_topk 的 max(K)）；默认 10（原为 5）",
+    )
+    parser.add_argument(
+        "--no-inject-fault-name",
+        action="store_true",
+        help="关闭将 fault_event.name 并入候选（默认开启，用于提高金标落入候选的概率）",
     )
     args = parser.parse_args()
 
@@ -202,11 +242,14 @@ def main() -> None:
     default_workers = (os.cpu_count() or 4) * 2
     workers = args.workers if args.workers is not None else default_workers
     workers = max(1, workers)
-    print(f"使用 {workers} 个进程并行计算 Top-K（共 {len(keys_to_compute)} 个唯一 key）")
+    topk_max = max(5, int(args.topk_max))
+    ks = [1, 3, 5, topk_max]
+    inject_name = not args.no_inject_fault_name
+    print(f"使用 {workers} 个进程并行计算 Top-K（共 {len(keys_to_compute)} 个唯一 key），K_max={topk_max}，inject_fault_name={inject_name}")
 
     cache: dict[tuple[str, int, int], dict] = {}
     try:
-        payloads = [(key, weights) for key in keys_to_compute]
+        payloads = [(key, weights, ks) for key in keys_to_compute]
         with ProcessPoolExecutor(max_workers=workers) as executor:
             futures = {executor.submit(compute_one_key, payload): payload for payload in payloads}
             for future in as_completed(futures):
@@ -215,7 +258,14 @@ def main() -> None:
 
         with output_path.open("w", encoding="utf-8") as out_handle:
             for sample, key, idx in ordered_items:
-                top_candidates = cache[key].get(idx, [])
+                raw = cache[key].get(idx, [])
+                fe = sample.get("input", {}).get("fault_event", {})
+                if inject_name:
+                    top_candidates = merge_candidates_with_fault_event(
+                        raw, fe, max_candidates=topk_max
+                    )
+                else:
+                    top_candidates = raw[:topk_max]
                 llm_input = {
                     "instruction": "给定观测证据与候选根因列表，输出根因组件与故障类型，并给出简要解释。",
                     "input": {

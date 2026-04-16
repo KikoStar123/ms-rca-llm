@@ -1,0 +1,13 @@
+{
+  "jsonl": "E:\\Graduation_Project_online\\output\\eval_split.jsonl",
+  "total_lines": 200,
+  "gold_missing": 0,
+  "gold_not_in_candidates": 127,
+  "gold_in_candidates_anywhere": 73,
+  "coverage_top3": 0.2,
+  "coverage_top5": 0.365,
+  "coverage_top10": 0.365,
+  "interpretation": "coverage_topK 表示：金标在候选列表第 K 位之内（0-based 前 K 个）的样本占比。 若 gold_not_in_candidates 较高，应优先改进上游候选生成；否则以模型在候选内辨别为主。",
+  "mean_rank_when_in_list": 2.1507,
+  "median_rank_when_in_list": 2
+}

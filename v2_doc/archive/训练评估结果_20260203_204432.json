@@ -1,0 +1,18 @@
+{
+  "model": "/root/autodl-tmp/hf_cache/Qwen2.5-7B-Instruct",
+  "train_size": 1528,
+  "eval_size": 200,
+  "before": {
+    "total": 200,
+    "parsed": 200,
+    "root_acc": 0.645,
+    "type_acc": 1.0
+  },
+  "after": {
+    "total": 200,
+    "parsed": 200,
+    "root_acc": 0.735,
+    "type_acc": 1.0
+  },
+  "note": "故障类型准确率使用规范化匹配（去除多余空格），微调前后均为100%"
+}

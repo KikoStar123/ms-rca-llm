@@ -1,0 +1,38 @@
+# 实验默认可复现参数（与开题报告 / pipeline 脚本对齐）
+# 修改后请在论文或 v2_doc 中记录版本号
+
+data:
+  llm_inputs_jsonl: output/llm_inputs_v4.jsonl
+  failure_csv_glob: data/aiops2020/故障整理（预赛）.csv
+
+window:
+  # 与 build_sft_samples / small_model 默认一致：故障时刻前后各 5 分钟
+  before_minutes: 5
+  after_minutes: 5
+
+split:
+  random_seed: 42
+  eval_ratio: 0.1157
+  eval_size_cap: 200
+  min_eval: 25
+
+small_model:
+  default_k_list: [1, 3, 5]
+  platform_weight: 1.0
+  trace_weight: 1.5
+  anomaly_weight: 0.8
+
+training:
+  qlora_4bit: true
+  max_length: 384
+  lora_r: 8
+  lora_alpha: 16
+  learning_rate: 2.0e-4
+  epochs: 1
+
+output_schema:
+  keys:
+    - root_cause_component
+    - fault_type
+    - kpi
+    - related_container

@@ -1,0 +1,28 @@
+{
+  "test_date": "2020-05-31",
+  "total": 11,
+  "correct": 9,
+  "accuracy": 0.8182,
+  "confusion": [
+    {
+      "true": "network delay",
+      "pred": "network delay",
+      "count": 7
+    },
+    {
+      "true": "network loss",
+      "pred": "network delay",
+      "count": 2
+    },
+    {
+      "true": "db connection limit",
+      "pred": "db connection limit",
+      "count": 1
+    },
+    {
+      "true": "CPU fault",
+      "pred": "CPU fault",
+      "count": 1
+    }
+  ]
+}

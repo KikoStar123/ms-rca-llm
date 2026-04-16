@@ -1,0 +1,27 @@
+{
+  "model": "/root/autodl-tmp/hf_cache/Qwen2.5-7B-Instruct",
+  "train_size": 1528,
+  "eval_size": 200,
+  "before": {
+    "total": 200,
+    "parsed": 58,
+    "root_acc": 0.21,
+    "root_acc_top3": 0.13,
+    "root_acc_top5": 0.23,
+    "type_acc": 0.29,
+    "kpi_acc": 0.29,
+    "container_acc": 0.29,
+    "full_match_acc": 0.21
+  },
+  "after": {
+    "total": 200,
+    "parsed": 58,
+    "root_acc": 0.22,
+    "root_acc_top3": 0.13,
+    "root_acc_top5": 0.23,
+    "type_acc": 0.29,
+    "kpi_acc": 0.22,
+    "container_acc": 0.29,
+    "full_match_acc": 0.16
+  }
+}

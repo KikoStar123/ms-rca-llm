@@ -1,0 +1,10 @@
+{"event_index": "160", "log_time": "2020-05-31 00:17:00", "root_cause": "docker_007", "top_candidates": ["docker_002", "docker_003", "docker_004", "docker_001", "docker_005"]}
+{"event_index": "161", "log_time": "2020-05-31 00:47:00", "root_cause": "docker_001", "top_candidates": ["docker_003", "docker_002", "docker_001", "docker_004", "docker_006"]}
+{"event_index": "162", "log_time": "2020-05-31 01:47:00", "root_cause": "docker_008", "top_candidates": ["docker_002", "docker_003", "docker_004", "docker_001", "docker_007"]}
+{"event_index": "163", "log_time": "2020-05-31 02:17:00", "root_cause": "docker_008", "top_candidates": ["docker_002", "docker_004", "docker_003", "docker_001", "docker_005"]}
+{"event_index": "164", "log_time": "2020-05-31 02:47:00", "root_cause": "os_021", "top_candidates": ["docker_004", "docker_001", "docker_002", "docker_003", "docker_007"]}
+{"event_index": "165", "log_time": "2020-05-31 03:17:00", "root_cause": "os_017", "top_candidates": ["docker_002", "docker_003", "docker_001", "docker_004", "docker_008"]}
+{"event_index": "166", "log_time": "2020-05-31 03:47:00", "root_cause": "db_003", "top_candidates": ["docker_004", "docker_002", "docker_001", "docker_003", "docker_005"]}
+{"event_index": "167", "log_time": "2020-05-31 04:17:00", "root_cause": "docker_004", "top_candidates": ["docker_002", "docker_004", "docker_003", "docker_001", "docker_006"]}
+{"event_index": "168", "log_time": "2020-05-31 04:47:00", "root_cause": "docker_006", "top_candidates": ["docker_002", "docker_003", "docker_001", "docker_004", "docker_005"]}
+{"event_index": "169", "log_time": "2020-05-31 05:48:00", "root_cause": "docker_003", "top_candidates": ["docker_002", "docker_004", "docker_003", "docker_001", "docker_005"]}

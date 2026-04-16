@@ -1,0 +1,15 @@
+{
+  "instruction": "给定观测证据与候选根因列表，输出根因组件与故障类型，并给出简要解释。",
+  "input": {
+    "fault_event": {
+      "index": "113",
+      "fault_description": "CPU fault",
+      "kpi": "container_cpu_used",
+      "name": "docker_006",
+      "container": "container_002",
+      "log_time": "2020-05-23 04:47:00"
+    },
+    "evidence": {},
+    "top_candidates": ["docker_004", "docker_002", "docker_001", "docker_003", "docker_006"]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "date": "2020-05-31",
+  "total": 10,
+  "hit_rate": {
+    "hit@1": 0.0,
+    "hit@3": 0.3,
+    "hit@5": 0.3
+  },
+  "weights": {
+    "platform": 1.0,
+    "trace": 2.0,
+    "anomaly": 1.0,
+    "anomaly_once": true,
+    "elapsed_cap": 5.0,
+    "failure_penalty": 5.0,
+    "slow_threshold": 1.0,
+    "rate_mode": false
+  }
+}

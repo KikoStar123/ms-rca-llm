@@ -1,0 +1,28 @@
+{
+  "model": "e:\\Graduation_Project_online\\models\\Qwen2.5-7B-Instruct",
+  "train_size": 1528,
+  "eval_size": 200,
+  "split_mode": "files:e:\\Graduation_Project_online\\output\\train_split.jsonl",
+  "before": {
+    "total": 200,
+    "parsed": 200,
+    "root_acc": 0.645,
+    "root_acc_top3": 0.2,
+    "root_acc_top5": 0.365,
+    "type_acc": 1.0,
+    "kpi_acc": 1.0,
+    "container_acc": 1.0,
+    "full_match_acc": 0.645
+  },
+  "after": {
+    "total": 200,
+    "parsed": 200,
+    "root_acc": 0.535,
+    "root_acc_top3": 0.2,
+    "root_acc_top5": 0.365,
+    "type_acc": 0.995,
+    "kpi_acc": 0.98,
+    "container_acc": 1.0,
+    "full_match_acc": 0.525
+  }
+}

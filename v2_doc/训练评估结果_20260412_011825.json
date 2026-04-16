@@ -1,0 +1,37 @@
+{
+  "model": "e:\\Graduation_Project_online\\models\\Qwen2.5-7B-Instruct",
+  "train_size": 1528,
+  "eval_size": 200,
+  "split_mode": "files:e:\\Graduation_Project_online\\output\\train_split.jsonl",
+  "finetune": {
+    "skip_before_eval": true,
+    "lora_r": 24,
+    "lora_alpha": 48,
+    "lora_dropout": 0.08,
+    "num_train_epochs": 1.0,
+    "gradient_accumulation_steps": 4,
+    "learning_rate": 3e-05,
+    "warmup_ratio": 0.08,
+    "weight_decay": 0.01,
+    "max_grad_norm": 1.0,
+    "lr_scheduler_type": "cosine",
+    "bf16": true,
+    "use_eval_for_early_best": true,
+    "early_stopping_patience": 4,
+    "total_optimizer_steps_approx": 382,
+    "eval_output_repair": true,
+    "eval_root_project_to_candidates": "0"
+  },
+  "before": null,
+  "after": {
+    "total": 200,
+    "parsed": 200,
+    "root_acc": 0.645,
+    "root_acc_top3": 0.2,
+    "root_acc_top5": 0.365,
+    "type_acc": 1.0,
+    "kpi_acc": 1.0,
+    "container_acc": 1.0,
+    "full_match_acc": 0.645
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "source": "E:\\Graduation_Project_online\\output\\llm_inputs_v4.jsonl",
+  "total": 1728,
+  "train_count": 1528,
+  "eval_count": 200,
+  "seed": 42,
+  "note": "与 train_qwen2_5_7b_qlora_demo 一致：shuffle 全量后前 train_size 为训练集，紧接着 eval_n 为评估集"
+}

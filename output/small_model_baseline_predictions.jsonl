@@ -1,0 +1,11 @@
+{"features": {"object": "docker", "kpi": "", "log_time": "2020-05-31 00:17:00"}, "true_fault_type": "network delay", "pred_fault_type": "network delay"}
+{"features": {"object": "docker", "kpi": "", "log_time": "2020-05-31 00:17:00"}, "true_fault_type": "network delay", "pred_fault_type": "network delay"}
+{"features": {"object": "docker", "kpi": "", "log_time": "2020-05-31 00:47:00"}, "true_fault_type": "network delay", "pred_fault_type": "network delay"}
+{"features": {"object": "docker", "kpi": "", "log_time": "2020-05-31 01:47:00"}, "true_fault_type": "network loss", "pred_fault_type": "network delay"}
+{"features": {"object": "docker", "kpi": "", "log_time": "2020-05-31 02:17:00"}, "true_fault_type": "network delay", "pred_fault_type": "network delay"}
+{"features": {"object": "os", "kpi": "Sent_queue;Received_queue", "log_time": "2020-05-31 02:47:00"}, "true_fault_type": "network delay", "pred_fault_type": "network delay"}
+{"features": {"object": "os", "kpi": "Sent_queue;Received_queue", "log_time": "2020-05-31 03:17:00"}, "true_fault_type": "network delay", "pred_fault_type": "network delay"}
+{"features": {"object": "db", "kpi": "Proc_User_Used_Pct;Proc_Used_Pct;Sess_Connect", "log_time": "2020-05-31 03:47:00"}, "true_fault_type": "db connection limit", "pred_fault_type": "db connection limit"}
+{"features": {"object": "docker", "kpi": "container_cpu_used", "log_time": "2020-05-31 04:17:00"}, "true_fault_type": "CPU fault", "pred_fault_type": "CPU fault"}
+{"features": {"object": "docker", "kpi": "", "log_time": "2020-05-31 04:47:00"}, "true_fault_type": "network delay", "pred_fault_type": "network delay"}
+{"features": {"object": "docker", "kpi": "", "log_time": "2020-05-31 05:48:00"}, "true_fault_type": "network loss", "pred_fault_type": "network delay"}

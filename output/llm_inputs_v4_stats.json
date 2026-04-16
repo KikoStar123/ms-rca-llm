@@ -1,0 +1,97 @@
+{
+  "total_samples": 162,
+  "fault_type_counts": [
+    [
+      "network delay",
+      62
+    ],
+    [
+      "CPU fault",
+      38
+    ],
+    [
+      "network loss",
+      38
+    ],
+    [
+      "db connection limit",
+      14
+    ],
+    [
+      "db  close",
+      10
+    ]
+  ],
+  "root_cause_counts": [
+    [
+      "docker_001",
+      20
+    ],
+    [
+      "db_003",
+      14
+    ],
+    [
+      "docker_006",
+      14
+    ],
+    [
+      "docker_003",
+      12
+    ],
+    [
+      "docker_002",
+      12
+    ],
+    [
+      "docker_008",
+      12
+    ],
+    [
+      "os_021",
+      12
+    ],
+    [
+      "docker_004",
+      10
+    ],
+    [
+      "db_007",
+      10
+    ],
+    [
+      "docker_007",
+      10
+    ],
+    [
+      "os_018",
+      10
+    ],
+    [
+      "docker_005",
+      8
+    ],
+    [
+      "os_020",
+      6
+    ],
+    [
+      "os_017",
+      6
+    ],
+    [
+      "os_009",
+      4
+    ],
+    [
+      "os_001",
+      2
+    ]
+  ],
+  "topk_size_counts": [
+    [
+      5,
+      162
+    ]
+  ]
+}

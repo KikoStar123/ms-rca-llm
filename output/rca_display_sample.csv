@@ -1,0 +1,2 @@
+event_id,time,top_candidates,root_cause_component,fault_type,kpi,related_container,explanation
+1,2020-04-11 00:05:00,"docker_003;docker_002;docker_001",docker_003,CPU fault,container_cpu_used,container_001,"证据显示 container_cpu_used 在窗口内显著升高，且调用链延迟集中在 docker_003。"

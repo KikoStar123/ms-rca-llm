@@ -1,0 +1,56 @@
+{
+  "total_samples": 9,
+  "fault_type_counts": [
+    [
+      "network delay",
+      3
+    ],
+    [
+      "network loss",
+      3
+    ],
+    [
+      "db  close",
+      3
+    ]
+  ],
+  "object_counts": [
+    [
+      "os",
+      6
+    ],
+    [
+      "db",
+      3
+    ]
+  ],
+  "root_cause_counts": [
+    [
+      "os_020",
+      3
+    ],
+    [
+      "os_017",
+      3
+    ],
+    [
+      "db_003",
+      3
+    ]
+  ],
+  "kpi_counts": [
+    [
+      "Sent_queue;Received_queue",
+      6
+    ],
+    [
+      "On_Off_State;tnsping_result_time",
+      3
+    ]
+  ],
+  "evidence_rows": {
+    "avg": 569.78,
+    "min": 221,
+    "max": 840
+  }
+}

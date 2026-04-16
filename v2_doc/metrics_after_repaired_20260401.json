@@ -1,0 +1,12 @@
+{
+  "total": 200,
+  "parsed": 200,
+  "parse_rate": 1.0,
+  "root_acc_top1": 0.535,
+  "root_acc_top3": 0.2,
+  "root_acc_top5": 0.365,
+  "fault_type_acc": 1.0,
+  "kpi_acc": 1.0,
+  "related_container_acc": 1.0,
+  "full_match_acc": 0.535
+}

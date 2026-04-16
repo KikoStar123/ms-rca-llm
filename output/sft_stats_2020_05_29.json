@@ -1,0 +1,64 @@
+{
+  "total_samples": 12,
+  "fault_type_counts": [
+    [
+      "CPU fault",
+      6
+    ],
+    [
+      "db connection limit",
+      3
+    ],
+    [
+      "network delay",
+      3
+    ]
+  ],
+  "object_counts": [
+    [
+      "docker",
+      9
+    ],
+    [
+      "db",
+      3
+    ]
+  ],
+  "root_cause_counts": [
+    [
+      "db_003",
+      3
+    ],
+    [
+      "docker_008",
+      3
+    ],
+    [
+      "docker_001",
+      3
+    ],
+    [
+      "docker_006",
+      3
+    ]
+  ],
+  "kpi_counts": [
+    [
+      "container_cpu_used",
+      6
+    ],
+    [
+      "Proc_User_Used_Pct;Proc_Used_Pct;Sess_Connect",
+      3
+    ],
+    [
+      "",
+      3
+    ]
+  ],
+  "evidence_rows": {
+    "avg": 26877.5,
+    "min": 344,
+    "max": 63112
+  }
+}

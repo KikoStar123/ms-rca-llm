@@ -1,0 +1,21 @@
+# 本机打包上传临时目录与压缩包（可用 scripts/pack_for_upload.ps1 生成）
+_upload_temp/
+Graduation_Project_upload.zip
+
+# 大数据与权重（勿提交；服务器用 HuggingFace 缓存或单独上传）
+data/
+models/
+
+# 训练检查点（体积大）
+v2_doc/model_ckpt/
+
+# 日志与缓存
+logs/
+**/__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+.env
+.cursor/

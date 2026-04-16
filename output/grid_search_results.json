@@ -1,0 +1,114 @@
+{
+  "results": [
+    {
+      "trace_weight": 1.0,
+      "anomaly_weight": 0.5,
+      "avg": {
+        "hit@1": 0.2406,
+        "hit@3": 0.3406,
+        "hit@5": 0.4198
+      }
+    },
+    {
+      "trace_weight": 1.0,
+      "anomaly_weight": 0.8,
+      "avg": {
+        "hit@1": 0.2406,
+        "hit@3": 0.3406,
+        "hit@5": 0.4198
+      }
+    },
+    {
+      "trace_weight": 1.0,
+      "anomaly_weight": 1.0,
+      "avg": {
+        "hit@1": 0.2406,
+        "hit@3": 0.3406,
+        "hit@5": 0.4198
+      }
+    },
+    {
+      "trace_weight": 1.5,
+      "anomaly_weight": 0.5,
+      "avg": {
+        "hit@1": 0.225,
+        "hit@3": 0.3406,
+        "hit@5": 0.3948
+      }
+    },
+    {
+      "trace_weight": 1.5,
+      "anomaly_weight": 0.8,
+      "avg": {
+        "hit@1": 0.225,
+        "hit@3": 0.3406,
+        "hit@5": 0.3948
+      }
+    },
+    {
+      "trace_weight": 1.5,
+      "anomaly_weight": 1.0,
+      "avg": {
+        "hit@1": 0.225,
+        "hit@3": 0.3406,
+        "hit@5": 0.3948
+      }
+    },
+    {
+      "trace_weight": 2.0,
+      "anomaly_weight": 0.5,
+      "avg": {
+        "hit@1": 0.2,
+        "hit@3": 0.3406,
+        "hit@5": 0.3948
+      }
+    },
+    {
+      "trace_weight": 2.0,
+      "anomaly_weight": 0.8,
+      "avg": {
+        "hit@1": 0.2,
+        "hit@3": 0.3406,
+        "hit@5": 0.3948
+      }
+    },
+    {
+      "trace_weight": 2.0,
+      "anomaly_weight": 1.0,
+      "avg": {
+        "hit@1": 0.2,
+        "hit@3": 0.3406,
+        "hit@5": 0.3948
+      }
+    }
+  ],
+  "best": [
+    {
+      "trace_weight": 1.0,
+      "anomaly_weight": 0.5,
+      "avg": {
+        "hit@1": 0.2406,
+        "hit@3": 0.3406,
+        "hit@5": 0.4198
+      }
+    },
+    {
+      "trace_weight": 1.0,
+      "anomaly_weight": 0.8,
+      "avg": {
+        "hit@1": 0.2406,
+        "hit@3": 0.3406,
+        "hit@5": 0.4198
+      }
+    },
+    {
+      "trace_weight": 1.0,
+      "anomaly_weight": 1.0,
+      "avg": {
+        "hit@1": 0.2406,
+        "hit@3": 0.3406,
+        "hit@5": 0.4198
+      }
+    }
+  ]
+}

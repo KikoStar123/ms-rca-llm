@@ -1,0 +1,76 @@
+{
+  "total_samples": 24,
+  "fault_type_counts": [
+    [
+      "network loss",
+      12
+    ],
+    [
+      "network delay",
+      9
+    ],
+    [
+      "CPU fault",
+      3
+    ]
+  ],
+  "object_counts": [
+    [
+      "os",
+      12
+    ],
+    [
+      "docker",
+      12
+    ]
+  ],
+  "root_cause_counts": [
+    [
+      "docker_002",
+      6
+    ],
+    [
+      "os_021",
+      3
+    ],
+    [
+      "docker_005",
+      3
+    ],
+    [
+      "docker_001",
+      3
+    ],
+    [
+      "os_009",
+      3
+    ],
+    [
+      "os_020",
+      3
+    ],
+    [
+      "os_018",
+      3
+    ]
+  ],
+  "kpi_counts": [
+    [
+      "Sent_queue;Received_queue",
+      12
+    ],
+    [
+      "",
+      9
+    ],
+    [
+      "container_cpu_used",
+      3
+    ]
+  ],
+  "evidence_rows": {
+    "avg": 30323.92,
+    "min": 362,
+    "max": 103583
+  }
+}

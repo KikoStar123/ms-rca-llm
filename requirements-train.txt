@@ -1,0 +1,10 @@
+# 服务器 / 本地训练环境（CUDA 版 PyTorch 请按机器单独安装，见 README）
+transformers>=4.40.0
+peft>=0.11.0
+bitsandbytes>=0.43.0
+accelerate>=0.30.0
+datasets>=2.18.0
+sentencepiece
+protobuf
+einops
+pyyaml

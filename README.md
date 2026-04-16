@@ -94,6 +94,26 @@ ls -lt logs/training_*.log | head -1
    ```
 4. **模型与数据**：基座模型用 HuggingFace 缓存或 `huggingface-cli download`；原始大数据集在本机或网盘传到 AutoDL，与仅同步代码的 Git 流程分开。
 
+### 快捷脚本
+
+| 环境 | 脚本 | 作用 |
+|------|------|------|
+| Windows 本机 | `.\scripts\git_push.ps1 -Message "说明"` | `git add` → `commit` → `push`（默认分支 `main`） |
+| AutoDL / Linux | `bash scripts/git_pull_server.sh` | `git pull --ff-only`（请先 `export GRADUATION_PROJECT_ROOT=你的克隆路径`） |
+
+### 服务器上 `data/`、`models/` 放到哪里
+
+先设定仓库根（与 `config.py` 一致），例如：
+
+`export GRADUATION_PROJECT_ROOT=/root/autodl-tmp/ms-rca-llm`（按你的实际克隆路径修改）。
+
+| 本机目录 | 上传到服务器 | 说明 |
+|----------|----------------|------|
+| `data/`（含 `aiops2020` 等） | `$GRADUATION_PROJECT_ROOT/data/` | 保持与本机相同的子目录结构；`config` 会优先使用 `data/aiops2020`（若存在） |
+| `models/Qwen2.5-7B-Instruct/` | **方案 A**：`$GRADUATION_PROJECT_ROOT/models/Qwen2.5-7B-Instruct/`<br>**方案 B**：`/root/autodl-tmp/hf_cache/Qwen2.5-7B-Instruct/`，并执行 `export QWEN_MODEL_PATH=/root/autodl-tmp/hf_cache/Qwen2.5-7B-Instruct` | 方案 B 可与其它项目共用 HuggingFace 缓存目录 |
+
+若使用 AutoDL 默认目录名 `Graduation_Project` 且路径为 `/root/autodl-tmp/Graduation_Project`，`config.py` 会自动指向该目录下的 `data` 与 `/root/autodl-tmp/hf_cache/` 中的基座模型。**若仓库目录名不是该默认路径，必须设置 `GRADUATION_PROJECT_ROOT`**，否则会误用其它分支里的路径逻辑。
+
 ## 注意事项
 
 - 训练日志保存在 `logs/` 目录

@@ -100,8 +100,9 @@ ls -lt logs/training_*.log | head -1
 |------|------|------|
 | Windows 本机 | `.\scripts\git_push.ps1 -Message "说明"` | `git add` → `commit` → `push`（默认分支 `main`） |
 | AutoDL / Linux | `bash scripts/git_pull_server.sh` | `git pull --ff-only`（请先 `export GRADUATION_PROJECT_ROOT=你的克隆路径`） |
+| AutoDL / Linux | `bash scripts/remote_full_pipeline.sh` | 远程一条龙：`git pull` → `build_llm_inputs` → `split_dataset` → 训练（见指南） |
 
-在服务器上交给自动化 Agent 按步骤训练时，使用 **`docs/SERVER_TRAINING_AGENT_GUIDE.md`**（含环境变量、自检命令与主训练命令）。
+**只在服务器上跑全流程**（本机不训练）：见 **`docs/SERVER_TRAINING_AGENT_GUIDE.md`** 中「全流程只在远程执行」；交给 Agent 时仍用同文档的检查清单与命令。
 
 ### 服务器上 `data/`、`models/` 放到哪里
 

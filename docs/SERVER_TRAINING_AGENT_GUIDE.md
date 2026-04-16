@@ -4,6 +4,61 @@
 
 ---
 
+## 全流程只在远程执行（本机可不跑）
+
+若你希望**不在本机执行任何训练或数据构建**，只在 AutoDL 等服务器上完成一切，请按下面准备与执行。
+
+### 一次性准备（传到服务器或在该机下载）
+
+| 内容 | 说明 |
+|------|------|
+| 代码 | `git clone` 本仓库后，之后只用 `git pull` |
+| `data/aiops2020/` | 原始赛题数据目录（**重建 LLM 输入 / 小模型 Top‑K 时必需**） |
+| `output/sft_samples_*.jsonl` | SFT 样本（**运行 `build_llm_inputs.py` 前必需**；若你从未在远端生成过，需先在本机或其它环境生成后上传，或在服务器上按 `python pipeline/run_rca_pipeline.py list` 从原始数据生成） |
+| 基座模型 | `Qwen2.5-7B-Instruct` 整包，或在该机 `huggingface-cli download` |
+
+本机**不需要**再跑训练；仅需保证上述文件在服务器上的路径与 `GRADUATION_PROJECT_ROOT`、`QWEN_MODEL_PATH` 一致。
+
+### 一键脚本（推荐）
+
+在已 `export GRADUATION_PROJECT_ROOT` 与 `QWEN_MODEL_PATH` 后：
+
+```bash
+cd "$GRADUATION_PROJECT_ROOT"
+bash scripts/remote_full_pipeline.sh
+```
+
+默认顺序：**git pull** → **`build_llm_inputs.py`** → **`split_dataset.py`** → **训练**。  
+若已有现成的 `output/llm_inputs_v4.jsonl` 与划分文件、只想训练：
+
+```bash
+export SKIP_DATA_BUILD=1
+bash scripts/remote_full_pipeline.sh
+```
+
+只重建数据、不训练：
+
+```bash
+export SKIP_TRAIN=1
+bash scripts/remote_full_pipeline.sh
+```
+
+训练附加参数（示例）：
+
+```bash
+export TRAIN_EXTRA_ARGS="--skip-before-eval --epochs 2"
+bash scripts/remote_full_pipeline.sh
+```
+
+离线无 Git 时：
+
+```bash
+export GIT_PULL=0
+bash scripts/remote_full_pipeline.sh
+```
+
+---
+
 ## 0. 执行前必读（Agent 检查清单）
 
 在运行任何训练命令前，请逐项确认：
@@ -160,9 +215,11 @@ LoRA 检查点目录由 `config` 中的 `MODEL_CKPT_DIR` 决定，一般为 `v2_
 
 ---
 
-## 8. 给 Agent 的最小执行序列（复制粘贴模板）
+## 8. 给 Agent 的执行序列
 
-将 `REPO` 与 `QWEN_MODEL_PATH` 改为服务器真实路径后执行：
+### 8A. 仅训练（仓库里已有 `output/*.jsonl` 划分）
+
+将 `REPO` 与 `QWEN_MODEL_PATH` 改为服务器真实路径：
 
 ```bash
 export REPO=/root/autodl-tmp/ms-rca-llm
@@ -181,6 +238,10 @@ test -f "$REPO/output/llm_inputs_v4.jsonl" && echo "data jsonl ok"
 
 python pipeline/large_model/train_qwen2_5_7b_qlora_demo.py
 ```
+
+### 8B. 全流程远程（数据构建 + 划分 + 训练）
+
+见上文 **「全流程只在远程执行」** 与 `bash scripts/remote_full_pipeline.sh`。
 
 ---
 
